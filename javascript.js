@@ -66,7 +66,27 @@ function addNewCard() {
 
 const mainDisplay = document.querySelector('.mainDisplay');
 const sideDisplay = document.querySelector('.sideDisplay');
+const form = document.querySelector('.cardForm');
+const formTitle = document.querySelector('#title');
+const formAuthor = document.querySelector('#author');
+const formPages = document.querySelector('#pages');
+const formIsRead = document.querySelector('#isread');
+const formSubmit = document.querySelector('#submitButton');
+const addBookButton = document.querySelector('.addBookButton');
+const addBookDescription = document.querySelector('.addBookDescription');
+
+addBookButton.addEventListener('click', () => {
+    addBookButton.style.zIndex = '-1';
+    addBookDescription.style.zIndex = '-1';
+    form.style.zIndex = '1';
+});
+
+form.style.zIndex = '-1';
+
+formSubmit.addEventListener('click', () => formSubmit.preventDefault());
 
 // tests
+
+console.log(form.zIndex);
 
 displayLibrary();

@@ -86,20 +86,23 @@ footer {
 }
 
 .addBookButton {
-
-}
-
-.cardToggle {
-    z-index: -1;
+    padding: 25px;
+    width: 200px;
+    height: 200px;
+    color: red;
+    background-color: ;
+    font-size: 100px;
+    cursor: pointer;
 }
 
 /* Form */
 
 .cardForm {
     position: absolute;
-    z-index: 1;
     height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .cardForm>legend {
@@ -120,9 +123,31 @@ footer {
 
 .inputs>input {
     padding: 5px;
+    background-color: #e5e5e5;
+    border: none;
+    border-radius: 5px;
+}
+
+#number {
+    flex-direction: row;
+    white-space: nowrap;
+}
+
+label[for='pages'] {
+    align-self: center;
+}
+
+#pages {
+    width: 80px;
 }
 
 #checkbox {
     flex-direction: row;
-    
+    justify-content: center;
+}
+
+#submitButton {
+    align-self: center;
+    width: 50%;
+    padding: 10px;
 }
