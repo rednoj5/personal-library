@@ -36,47 +36,94 @@ main {
 footer {
     height: 5vh;
     background-color: #a3a3a3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
 .mainDisplay {
     height: 100%;
     flex: 3;
     background-color: transparent;
-    padding: 15px;
+    padding: 15px 25px 15px 25px;
     display: grid;
     gap: 15px;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+    grid-template-columns: repeat(auto-fit, minmax(359px, 1fr));
+    overflow: auto;
 }
 
-.sideDisplay {
+/*.sideDisplay {
     height: 100%;
     flex: 1;
     background-color: #262626;
-}
+}*/
 
 /* book cards */
 
 .card {
     background-color: #334155;
-    border: 1px solid red;
     display: flex;
     flex-flow: column;
     align-items: center;
     justify-content: center;
     gap: 20px;
     padding: 15px;
-    height: 350px;
+    height: 360px;
     color: #e5e5e5;
+    border-radius: 15px;
+    box-shadow: 0 0 8px black;
+    max-width: 400px;
 }
 
 .isreadButton {
     padding: 15px;
     width: 50%;
+    color: #e5e5e5;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    box-shadow: 0 4px 0 0 #e5e5e5;
+    cursor: pointer;
+    border-radius: 10px;
+}
 
+.isreadButton:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 0 #e5e5e5;
+}
+
+#read {
+    background-color: #22c55e;
+}
+
+#notread {
+    background-color: #ef4444;
 }
 
 .title {
     font-size: 2rem;
+}
+
+.removeButton {
+    padding: 15px;
+    width: 50%;
+    color: #dc2626;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border: none;
+    box-shadow: 0 4px 0 0 #e5e5e5;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: #0a0a0a;
+}
+
+.removeButton:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 0 #e5e5e5;
 }
 
 /* card to add a book */
@@ -86,13 +133,25 @@ footer {
 }
 
 .addBookButton {
-    padding: 25px;
+    padding: 0;
     width: 200px;
     height: 200px;
     color: red;
-    background-color: ;
-    font-size: 100px;
+    background-color: #172554;
+    font-size: 150px;
     cursor: pointer;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #e5e5e5;
+}
+
+.addBookDescription {
+    font-size: 1.5rem;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    text-align: center;
+    text
 }
 
 /* Form */
@@ -106,7 +165,7 @@ footer {
 }
 
 .cardForm>legend {
-    padding: 10px;
+    padding: 10px 5px 10px 5px;
     font-weight: bold;
 }
 
@@ -122,10 +181,11 @@ footer {
 }
 
 .inputs>input {
-    padding: 5px;
+    padding: 10px;
     background-color: #e5e5e5;
     border: none;
     border-radius: 5px;
+    font-size: 1rem;
 }
 
 #number {
@@ -150,4 +210,27 @@ label[for='pages'] {
     align-self: center;
     width: 50%;
     padding: 10px;
+    color: #e5e5e5;
+    background-color: #172554;
+    border: none;
+    box-shadow: 0 4px 0 0 #e5e5e5;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+
+#submitButton:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 0 #e5e5e5;
+}
+
+#gitLogo {
+    width: 24px;
+    height: auto;
+    transition: transform .2s;
+    color: gold;
+}
+
+#gitLogo:hover {
+    transform: scale(1.2);
 }

@@ -1,17 +1,10 @@
+// variables:
+
 let library = [
-    {
-        title: 'Nice book',
-        author: 'Guy',
-        pages: 123,
-        read: 1
-    },
-    {
-        title: 'Nice book 2',
-        author: 'Guy 2',
-        pages: 321,
-        read: 0
-    }
+
 ];
+
+// functions
 
 function ConstLibrary(title, author, pages, read) {
     this.title = title;
@@ -20,18 +13,19 @@ function ConstLibrary(title, author, pages, read) {
     this.read = read;
 }
 
-function addToLibrary() {
-    let newBook = ConstLibrary();
+function addToLibrary(args) {
+    let newBook = new ConstLibrary(...args);
     library.push(newBook);
+    displayCard.call(newBook);
 };
 
 function displayLibrary() {
     for (let book of library) {
-        addNewCard.call(book);
+        displayCard.call(book);
     }
 };
 
-function addNewCard() {
+function displayCard() {
     let newCard = document.createElement("div");
         newCard.setAttribute('class', 'card');
 
@@ -49,17 +43,42 @@ function addNewCard() {
 
     let ifRead = document.createElement('button');
         ifRead.setAttribute('class', 'isreadButton');
-        if (this.read === 1) {
+        if (this.read === true) {
             ifRead.textContent = 'Read';
+            ifRead.setAttribute('id', 'read');
         } else {
             ifRead.textContent = 'Not read';
+            ifRead.setAttribute('id', 'notread');
         };
+        ifRead.addEventListener('click', () => {
+            if (ifRead.textContent == 'Read') {
+                ifRead.textContent = 'No read';
+                ifRead.setAttribute('id', 'notread');
+            } else {
+                ifRead.textContent = 'Read';
+                ifRead.setAttribute('id', 'read');
+            }
+        });
+    let removeButton = document.createElement('button');
+        removeButton.setAttribute('class', 'removeButton');
+        removeButton.textContent = 'Remove';
+        removeButton.addEventListener('click', (e) => {
+            e.target.parentElement.remove();
+        });
         
         mainDisplay.appendChild(newCard);
         newCard.appendChild(newTitle);
         newCard.appendChild(newAuthor);
         newCard.appendChild(newPages);
         newCard.appendChild(ifRead);
+        newCard.appendChild(removeButton);
+};
+
+function addNewBook(e, ...args) {
+    if (args.includes('')) {
+        console.log('todo');
+    };
+    addToLibrary(args);
 };
 
 // DOM manipulation
@@ -83,10 +102,19 @@ addBookButton.addEventListener('click', () => {
 
 form.style.zIndex = '-1';
 
-formSubmit.addEventListener('click', () => formSubmit.preventDefault());
+formSubmit.addEventListener('click', function(e) {
+    e.preventDefault();
+    let newBookTitle = formTitle.value;
+    let newBookAuthor = formAuthor.value;
+    let newBookPages = formPages.value;
+    let newBookIsRead = formIsRead.checked;
+    addNewBook(e, newBookTitle, newBookAuthor, newBookPages, newBookIsRead);
+    addBookButton.style.zIndex = '1';
+    addBookDescription.style.zIndex = '1';
+    form.style.zIndex = '-1';
+    form.reset();
+})
 
-// tests
-
-console.log(form.zIndex);
+//
 
 displayLibrary();
